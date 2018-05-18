@@ -1,3 +1,7 @@
 geodjango/settings_secret.py
 settings_secret.py
 *.pyc
+.idea
+*.iml
+out
+gen

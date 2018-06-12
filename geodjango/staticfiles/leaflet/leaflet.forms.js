@@ -39,7 +39,7 @@ L.FieldStore = L.Class.extend({
         var is_geometrycollection = (geojson.geometry && geojson.geometry.type == 'GeometryCollection');
         if (is_multi && is_generic && !is_geometrycollection) {
             var flat = {type: 'GeometryCollection', geometries: []};
-            for (var i=0; i < geojson.features.length; i++) {
+            for (var i = 0; i < geojson.features.length; i++) {
                 flat.geometries.push(geojson.features[i].geometry);
             }
             geojson = flat;
@@ -67,7 +67,7 @@ L.FieldStore = L.Class.extend({
         // In order to make multipoint work, it seems we need to treat it similarly to the GeometryCollections
         else if (this.options.geom_type == 'MULTIPOINT') {
             var flat = {type: 'MultiPoint', coordinates: []};
-            for (var i=0; i < geojson.features.length; i++) {
+            for (var i = 0; i < geojson.features.length; i++) {
                 flat.coordinates.push(geojson.features[i].geometry.coordinates);
             }
             geojson = flat;
@@ -116,7 +116,7 @@ L.GeometryField = L.Class.extend({
 
         // Warn if leaving with unsaved changes
         var _beforeunload = window.onbeforeunload;
-        window.onbeforeunload = L.Util.bind(function(e) {
+        window.onbeforeunload = L.Util.bind(function (e) {
             if (this._unsavedChanges)
                 return L.GeometryField.unsavedText;
             if (typeof(_beforeunload) == 'function')
@@ -186,7 +186,7 @@ L.GeometryField = L.Class.extend({
                 }, this);
             }
             else if (this.options.collection_type !== 'featureGroup'
-                        && (geometry instanceof L.Polygon || geometry instanceof L.Polyline)) {
+                && (geometry instanceof L.Polygon || geometry instanceof L.Polyline)) {
                 var latlngs = geometry.getLatLngs();
                 for (var i = 0; i < latlngs.length; i++) {
                     this.drawnItems.addLayer(L[this.options.collection_type](latlngs[i]));

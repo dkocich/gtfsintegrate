@@ -1,6 +1,8 @@
 from rest_framework import serializers
+
 from gs.models import GTFSForm
 from multigtfs.models import Stop
+
 
 class FormSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +16,8 @@ class FormSerializer(serializers.ModelSerializer):
             'frequency',
             'feed'
         ]
+
+
 class GTFS_Stop_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Stop
